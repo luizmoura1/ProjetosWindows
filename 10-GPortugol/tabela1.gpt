@@ -1,0 +1,52 @@
+algoritmo tabela1.gpt;
+variáveis
+    id : matriz[64] de inteiros;
+    nome : matriz[64] de literais;
+    sexo : matriz[64] de caracteres;
+    nota : matriz[64] de reais;
+    aprovado : matriz[64] de lógicos;
+    MAX, n, i, j : inteiro;
+fim-variáveis
+início
+    MAX := 2;
+    imprima("--------------- T A B E L A ---------------\n");
+    imprima("Informe o numero de registros (1-64): ");
+    n := leia();
+    se n > 0 e n <= MAX então
+        enquanto i < n faça
+            imprima("ID: ");
+            id[i] := leia();
+ 
+            imprima("Nome: ");
+            nome[i] := leia();
+ 
+            enquanto sexo[i] <> 'M' e sexo[i] <> 'F' faça
+                imprima("Sexo (M/F): ");
+                sexo[i] := leia();
+            fim-enquanto
+             
+            nota[i] := 100;
+            enquanto nota[i] < 0 ou nota[i] > 10 faça
+                imprima("Nota (0-10): ");
+                nota[i] := leia();
+            fim-enquanto
+             
+            se nota[i] >= 5 então
+                aprovado[i] := verdadeiro;
+            senão
+                aprovado[i] := falso;
+            fim-se
+             
+            i := i + 1;
+        fim-enquanto
+    senão
+        imprima("Erro! Tamanho do vetor: ", MAX);
+    fim-se
+ 
+    imprima("-------------------------------------------\n");   
+    j := 0;
+    para j de 0 até i-1 passo 1 faça
+        imprima(id[j], " ", nome[j], " ", sexo[j], " ", nota[j],  " ", aprovado[j], "\n");        
+    fim-para
+    imprima("-------------------------------------------");     
+fim

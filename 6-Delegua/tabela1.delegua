@@ -1,0 +1,56 @@
+funcao mostrar_menu(){
+    var opt : numero
+    escreva("\n================== M E N U ===================");
+    escreva("1 - Inserir registro");
+    escreva("2 - Exibir registro");
+    escreva("Sair: qualquer tecla, exceto 1 e 2.");
+    opt = leia("Alternativa: ");
+    retorna opt
+}
+ 
+funcao escrever_registro(){
+    se pos <= MAX {
+        id[pos] = leia("ID: ");
+        nome[pos] = leia("Nome: ");
+        sexo[pos] = leia("Sexo: ");
+        nota[pos] = leia("Nota: ");
+        se nota[pos] > 4 {
+            aprovado[pos] = verdadeiro;
+        }
+        senao {
+            aprovado[pos] = falso;
+        }
+    }
+    pos = pos + 1;
+}
+ 
+funcao ler_registro(){
+    para var j = 0; j < pos; j = j + 1 {
+        escreva(id[j], "\t", nome[j], "\t", sexo[j], "\t", nota[j], "\t", aprovado[j]);
+    }
+}
+ 
+const MAX = 128;
+var alt = 0;
+var pos = 0;
+var id = [];
+var nota = [];
+var nome = [];
+var sexo = [];
+var aprovado = [];
+ 
+enquanto alt != 3 {
+    alt = mostrar_menu();
+    se alt == 1 {
+        escrever_registro();
+        continua;
+    }
+    senao se alt == 2 {
+        ler_registro();
+        continua;
+    }
+    senao {
+        escreva("FIM");
+        sustar;
+    }
+}

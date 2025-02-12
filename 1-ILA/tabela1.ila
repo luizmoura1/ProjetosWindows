@@ -1,0 +1,115 @@
+variaveis
+numerico i, j, const_max
+caracter aux
+matriz composta registro[23]
+    numerico id, nota
+    caracter nome, sexo
+    logico aprovado
+fim_composta
+ 
+funcao mostrar_menu()
+inicio
+   janela 1,1,24,80   
+   posicionar 1,1
+   escrever "============== Menu de Alternativas =============="
+   escrever "1. Inserir registros (maximo 23)"
+   escrever "2. Exibir registros"
+   escrever "3. Sair"
+   escrever "Escolha uma alternativa (1/2/3): "
+   ler aux
+fim
+ 
+funcao ler_registro()
+inicio
+   janela 1,1,24,80
+   posicionar 1,1
+   se (i = 0) entao
+       escrever "Nenhum registro encontrado."
+   senao
+       escrever "ID  NOME           SEXO      NOTA      APROVADO?"
+       para j = 1 ate i
+           posicionar 1+j,1
+           escrever registro[j]:id
+    
+           posicionar 1+j,5
+           escrever registro[j]:nome
+ 
+           posicionar 1+j,20
+           escrever registro[j]:sexo
+ 
+           posicionar 1+j,30
+           escrever registro[j]:nota
+ 
+           posicionar 1+j,40
+           escrever registro[j]:aprovado
+       proximo
+   fim_se
+   escrever "Pressione alguma tecla:"
+   ler aux
+   limpar
+fim
+ 
+funcao escrever_registro()
+inicio
+   i = i+1
+   janela 1,1,24,80
+   posicionar 1,1
+    
+   se i <= const_max entao
+       escrever "Informe o ID: "
+       ler aux
+       registro[i]:id = aux
+ 
+       escrever "Nome: "
+       ler aux
+       registro[i]:nome = aux
+ 
+       escrever "Sexo (M/F): "
+       faca enquanto (aux <> "M") e (aux <> "F") e (aux <> "m") e (aux <> "f")
+           limpar 6,1,6,79
+           posicionar 6,1
+           ler aux
+       fim_enquanto
+       registro[i]:sexo = aux
+ 
+       escrever "Nota (0-10): "
+       aux = 100
+       faca enquanto nao((valor(aux) > -1) e (valor(aux) < 11))
+           limpar 8,1,8,79
+           posicionar 8,1
+           ler aux
+       fim_enquanto
+       registro[i]:nota = valor(aux)
+ 
+       escrever "Aprovado? (V/F): "
+       faca enquanto (aux <> "V") e (aux <> "v") e (aux <> "F") e (aux <> "f")
+           limpar 10,1,10,79
+           posicionar 10,1
+           ler aux
+       fim_enquanto
+       se (aux = "V") ou (aux = "v") entao
+           registro[i]:aprovado = verdadeiro
+       senao
+           registro[i]:aprovado = falso
+       fim_se    
+ 
+   senao
+       escrever const_max, " registros! Pressione alguma tecla:"
+       ler aux
+       i = i-1
+       limpar
+   fim_se
+fim
+ 
+inicio
+   const_max = 23
+   faca enquanto (aux <> "3")
+       mostrar_menu()
+       se aux = "1" entao
+           escrever_registro()
+       fim_se
+       se aux = "2" entao
+           ler_registro()
+       fim_se
+   fim_enquanto
+fim
