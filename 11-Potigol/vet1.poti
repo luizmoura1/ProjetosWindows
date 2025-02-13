@@ -1,0 +1,14 @@
+var alunos := []
+var i := 1
+
+para i de 1 até 5 faça
+  escreva "Digite o {i} aluno:"
+  alunos[i] := leia_texto
+fim
+
+para i de 1 até 5 faça
+  escreva "Aluno: {alunos[i]}"
+fim
+
+
+
