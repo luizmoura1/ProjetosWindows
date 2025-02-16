@@ -1,0 +1,51 @@
+prog tabela1
+    int id[64], max, n, i, j;
+    string nome[64], sexo[64];
+    real nota[64];
+        
+    max <- 64;
+    n <- 0;
+    i <- 0;
+
+    imprima "--------------- T A B E L A ---------------\n";
+    imprima "Informe o numero de registros (1-64): ";
+    leia n;
+    se(n > 0 && n <= max)
+    {
+         enquanto(i < n)
+         {
+                   imprima "ID: ";
+                   leia id[i];         
+         
+                   imprima "Nome: ";
+                   leia nome[i];         
+
+                   faca
+                   {
+                        imprima "Sexo (M/F): ";
+                        leia sexo[i];         
+                   }
+                   enquanto(sexo[i] <> "M" && sexo[i] <> "F")
+                   
+                   nota[i] <- 100.0;
+                   faca
+                   {      
+                          imprima "Nota (0.0-10.0): ";
+                          leia nota[i];
+                   }
+                   enquanto(nota[i] < 0.0 || nota[i] > 10.0)
+                   i <- i + 1;                  
+          }         
+    }
+    senao
+    {
+         imprima "Erro! Tamanho do vetor: ", max, "\n";    
+    }
+ 
+    imprima "-------------------------------------------\n";   
+    para(j <- 0; j < i; j++)
+    {
+        imprima id[j], "\t", nome[j], "\t", sexo[j], "\t", nota[j], "\n";        
+    }
+    imprima "-------------------------------------------\n";     
+fimprog

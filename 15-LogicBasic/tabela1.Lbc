@@ -1,0 +1,36 @@
+#LB7#Window Res = 27,54, Size = 27,54, Pos = 14,90
+Window Background = LightBlue
+Font Parent.Bold = True Parent.Name = "Courier New" Parent.Color = Black Parent.Size = 10
+
+Var id(32) Integer, n Integer, tam Integer, i Integer, j Integer
+Var nome(32) String, sexo(32) String, status(32) String
+Var nota(32) Decimal  
+
+tam = 32
+Write Chr(9), Chr(9), "T A B E L A"
+Write "------------------------------------------------------"
+Write "ID", Chr(9), "Nome", Chr(9), "Sexo", Chr(9), "Nota", Chr(9), "Status"
+n = GetText("Informe o numero de registros {1-64}:")
+Position 4,1
+If n > 0 And n <= tam
+While i < n
+id(i) = GetText("ID:")
+nome(i) = GetText("Nome:")
+sexo(i) = GetText("Sexo:")
+nota(i) = StrVal(GetText("Nota:"))
+If nota(i) >= 5.0
+status(i) = "aprovado"
+Else
+status(i) = "reprovado"
+EndIf
+i++
+Loop
+Else
+Write "Erro! Tamanho do vetor: ", tam
+EndIf
+j = 0
+While j < i
+Write id(j), Chr(9), nome(j), Chr(9), sexo(j), Chr(9), nota(j), Chr(9), status(j)
+j++
+Loop
+EndProgram#%

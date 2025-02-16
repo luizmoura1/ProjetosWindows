@@ -1,0 +1,4 @@
+var aluno := ""
+escreva "Digite o nome do aluno:"
+aluno := leia_texto
+escreva aluno
