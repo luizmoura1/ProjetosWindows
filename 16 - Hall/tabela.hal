@@ -1,0 +1,49 @@
+// Função: tabela com estrutura - conjunto
+// Autor: Luiz
+// Data: 27/02/2025
+
+conjunto tab[32] {
+	inteiro id;
+	cadeia nome;
+	ascii sexo;
+	real nota;
+	cadeia status;
+};
+
+inteiro n, i, j;
+
+algoritmo() {
+	leia("Informe o numero de registros (1-32): ", n);
+	para (i = 1 ate n passo 1) {
+		escreva("");
+		leia("ID: ", tab[i].id);
+		leia("Nome: ", tab[i].nome);
+
+		repita{
+			leia("Sexo: ", tab[i].sexo);
+		}ate(tab[i].sexo == 'M' | tab[i].sexo == 'F');
+
+		tab[i].nota = 100;
+		repita{
+			leia("Nota: ", tab[i].nota);
+		}ate(tab[i].nota > -1 & tab[i].nota < 11 );
+		
+		se(tab[i].nota >= 5){
+			tab[i].status = "Aprovado";
+		}
+		senao{
+			tab[i].status = "Reprovado";
+		}		
+	}
+
+	escreva("----------------------------------------------");	
+	para (j = 1 ate i-1 passo 1) {
+		escreva(tab[j].id);
+		escreva(tab[j].nome);
+		escreva(tab[j].sexo);
+		escreva(tab[j].nota);
+		escreva(tab[j].status);
+		escreva("");
+	}
+}
+

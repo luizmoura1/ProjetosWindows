@@ -1,13 +1,12 @@
-var alunos := []
-var i := 0
+var alunos := vetor("",5)
 
-para i de 1 até 4 faça
-  escreva "Digite o {i+1}° aluno:"
-  alunos[i] := leia_texto
+para i de 0 até 4 faça
+  escreva("Digite o {i}° aluno:")
+  alunos[i] := leia_texto()
 fim
 
-para i de 1 até 4 faça
-  escreva "Aluno: {alunos[i]}"
+para i de 0 até 4 faça
+  escreva("{alunos[i]}")
 fim
 
 

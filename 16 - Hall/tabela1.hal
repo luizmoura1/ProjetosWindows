@@ -1,0 +1,62 @@
+// Função: tabela com estrutura - registro
+// Autor: Luiz
+// Data: 27/02/2025
+
+algoritmo(){
+	registro {
+		inteiro id;
+		cadeia nome;
+		ascii sexo;
+		real nota;
+		cadeia status;
+	} tab;
+
+	ascii flag;
+	inteiro i, j;
+
+	arquivo arq("tabela.txt");
+	criar_arq(arq);
+	abrir_arq(arq);
+
+	repita {
+		escreva("");
+		leia("ID: ", tab.id);
+		leia("Nome: ", tab.nome);
+
+		repita{
+			leia("Sexo: ", tab.sexo);
+		}ate(tab.sexo == 'M' | tab.sexo == 'F');
+
+		tab.nota = 100;
+		repita{
+			leia("Nota: ", tab.nota);
+		}ate(tab.nota > -1 & tab.nota < 11 );
+		
+		se(tab.nota >= 5){
+			tab.status = "Aprovado";
+		}
+		senao{
+			tab.status = "Reprovado";
+		}
+		
+		gravar_reg(arq, tab);
+		i = i + 1;
+		flag = lerCaracter("Digite algo (0 para sair): ");
+	}ate(flag == '0');
+	
+	pos_arq(arq, 0);
+	
+	limpatela();
+	escreva("Dados salvos com sucesso!");
+	escreva("----------------------------------------------");	
+	para(j = 1 ate i passo 1){
+		lerreg(arq, tab);
+		escreva(tab.id);
+		escreva(tab.nome);
+		escreva(tab.sexo);
+		escreva(tab.nota);
+		escreva(tab.status);
+		escreva("");			
+	}
+	fechar_arq(arq);
+}
