@@ -1,3 +1,4 @@
+'https://computerlanguagesite.wordpress.com/2025/03/09/smallbasic-tabela-com-array/
 'DIM id(128), nome(128), sexo(128), nota(128), aprovado(128)
 id = []
 nome = []
